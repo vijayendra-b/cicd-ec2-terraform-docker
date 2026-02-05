@@ -11,13 +11,15 @@ pipeline {
 
         stage('Deploy to EC2') {
             steps {
-                sh """
-                ssh -o StrictHostKeyChecking=no ec2-user@107.21.136.168 '
-                  docker stop nodeapp || true
-                  docker rm nodeapp || true
-                  docker run -d --name nodeapp -p 3000:3000 node-ec2-app:latest
-                '
-                """
+                sshagent(['ec2-ssh-key']) {
+                    sh '''
+                    ssh -o StrictHostKeyChecking=no ec2-user@107.21.136.168 "
+                    docker stop nodeapp || true
+                    docker rm nodeapp || true
+                    docker run -d --name nodeapp -p 3000:3000 node-ec2-app:latest
+                    "
+                    '''
+                }
             }
         }
     }
