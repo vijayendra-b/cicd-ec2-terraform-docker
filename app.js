@@ -2,7 +2,11 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-  const timestamp = new Date().toLocaleString();
+  const timestamp = new Date().toLocaleString("en-IN", {
+    timeZone: "Asia/Kolkata",
+    dateStyle: "full",
+    timeStyle: "medium"
+  });
 
   res.send(`
     <!DOCTYPE html>
