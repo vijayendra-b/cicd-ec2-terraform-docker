@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/vijayendra-b/cicd-ec2-terraform-docker.git'
-            }
-        }
 
         stage('Build Docker Image') {
             steps {
