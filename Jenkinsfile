@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-repo/nodejs-ec2-cicd.git'
+                git 'https://github.com/vijayendra-b/cicd-ec2-terraform-docker.git'
             }
         }
 
